@@ -1,0 +1,26 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "this project is build on node web framework express ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/745114565/myblog.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "web",
+    "ejs",
+    "mongodb"
+  ],
+  "author": "sunnn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/745114565/myblog/issues"
+  },
+  "homepage": "https://github.com/745114565/myblog#readme"
+}
