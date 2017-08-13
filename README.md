@@ -25,5 +25,5 @@ the demo use node web framework express
       <br/>
 >      本项目数据库使用的是mongoDB，数据库配置见项目config目录下default.js文件中的<br/>
 >   mongodb:'mongodb://myblog:123456@localhost:27017/myblog'配置。<br/>
->            'mongodb://用户名:密码@数据库地址:端口/数据库<br/>
+>>            'mongodb://用户名:密码@数据库地址:端口/数据库<br/>
 >   请按照自己的需求自己配置。<br/>
