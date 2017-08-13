@@ -11,6 +11,9 @@ var config = require('config-lite')({
 });
 var routes = require('./routes');
 var pkg = require('./package');
+var winston = require('winston');
+var expressWinston = require('express-winston');
+
 
 var app = express();
 
@@ -30,8 +33,10 @@ app.use(session({
   },
   store: new MongoStore({// 将 session 存储到 mongodb
     url: config.mongodb// mongodb 地址
+    
   })
 }));
+console.log('数据库连接成功！');
 // flash 中间价，用来显示通知
 app.use(flash());
 
@@ -54,8 +59,37 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash('error').toString();
   next();
 });
+
+
+// 正常请求的日志
+app.use(expressWinston.logger({
+  transports:[
+    new (winston.transports.Console)({
+      json :true,
+      colorize:true
+    }),
+    new winston.transports.File({
+      filename:'logs/success.log'
+    })
+  ]
+}));
+
 // 路由
 routes(app);
+
+// 错误日志
+app.use(expressWinston.errorLogger({
+  transports:[
+    new winston.transports.Console({
+      json:true,
+      colorize:true
+    }),
+    new winston.transports.File({
+      filename:'logs/error.log'
+    })
+  ]
+}));
+
 
 // error page
 app.use(function (err, req, res, next) {
@@ -66,5 +100,6 @@ app.use(function (err, req, res, next) {
 
 // 监听端口，启动程序
 app.listen(config.port, function () {
+  console.log('服务启动成功！');
   console.log(`${pkg.name} listening on port ${config.port}`);
 });
