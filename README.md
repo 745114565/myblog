@@ -20,3 +20,10 @@ the demo use node web framework express
    * 启动项目 
    
     运行命令：supervisor --harmony index 
+    
+ * 准备
+      
+      本项目数据库使用的是mongoDB，数据库配置见项目config目录下default.js文件中的
+   mongodb:'mongodb://myblog:123456@localhost:27017/myblog'配置。
+            'mongodb://用户名:密码@数据库地址:端口/数据库'
+   请按照自己的需求自己配置。
